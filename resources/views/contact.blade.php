@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - CRUD App</title>
+    <title>About - CRUD App</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
-<body>
+<body class="bg-background-light">
 
-    <!-- Header -->
+    <!-- Header / Nav -->
     <header class="site-header">
         <div class="logo">
             <svg class="logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -34,43 +34,14 @@
             @endif
         </nav>
 
-        <button class="btn-primary">Bestel nu</button>
-    </header>
+    <!-- Hero Section -->
+    <main>
 
-    <!-- Main -->
-    <main class="login-container">
-        <div class="login-card">
-            <h2>Welcome Back</h2>
-            <p>Log in to access your account</p>
-
-            <form action="#" method="POST" class="login-form">
-                <div class="form-group">
-                    <label for="email">Username or Email</label>
-                    <input type="email" id="email" name="email" placeholder="Username or Email" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Password" required>
-                </div>
-
-                <div class="form-footer">
-                    <a href="#" class="forgot-link">Forgot your password?</a>
-                </div>
-
-                <button type="submit" class="btn-primary full">Log In</button>
-            </form>
-
-            <p class="signup-text">
-                Don't have an account?
-                <a href="{{ route('register') }}">Sign Up</a>
-            </p>
-        </div>
     </main>
 
     <!-- Footer -->
     <footer class="site-footer">
-        <p>© 2024 CRUD APP. All rights reserved.</p>
+        <p>© 2025 CRUD APP. Alle rechten voorbehouden.</p>
     </footer>
 
 </body>

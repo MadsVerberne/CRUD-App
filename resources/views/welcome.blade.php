@@ -78,7 +78,7 @@
 
     <!-- Footer -->
     <footer class="site-footer">
-        <p>© 2024 Culinary Haven. Alle rechten voorbehouden.</p>
+        <p>© 2025 CRUD APP. Alle rechten voorbehouden.</p>
     </footer>
 
 </body>
