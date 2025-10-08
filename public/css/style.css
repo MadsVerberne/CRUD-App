@@ -1,19 +1,163 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    margin: 0;
-    padding: 0;
-}
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700;900&display=swap');
 
-header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 20px;
-    text-align: center;
+body {
+    font-family: 'Epilogue', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 main {
     padding: 20px;
+}
+
+.bg-background-light {
+    background-color: #f8f7f6;
+}
+
+.bg-background-dark {
+    background-color: #221910;
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2.5rem;
+    border-bottom: 1px solid rgba(236, 127, 19, 0.2);
+    backdrop-filter: blur(5px);
+    position: sticky;
+    top: 0;
+    background-color: rgba(248, 247, 246, 0.8);
+    z-index: 10;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #ec7f13;
+}
+
+.logo-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.site-nav a {
+    margin-left: 1.5rem;
+    font-weight: 500;
+    color: #4b5563;
+    text-decoration: none;
+}
+
+.site-nav a:hover {
+    color: #ec7f13;
+}
+
+.btn-primary {
+    background-color: #ec7f13;
+    color: #fff;
+    padding: 0.625rem 2rem;
+    margin-top: 20px;
+    font-weight: bold;
+    border-radius: 0.25rem;
+}
+
+.btn-outline {
+    border: 2px solid #ec7f13;
+    color: #ec7f13;
+    background-color: transparent;
+    padding: 0.75rem 2rem;
+    font-weight: bold;
+    border-radius: 0.25rem;
+}
+
+.hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuA8SuRGqyu8ZImNDnvMsZekUcRISmUMEXktpdj3fV5DfblpHFDLCKh_v65-Nb3aEvGGSofGv72GE48Z96WhcsKmot9RBjYlsNGMkvndfndVofS-ycMeRiqtU715k7CLZRubHNXyFw2De5qjlh6uSgjs73XKmuCDTPCUBxu1IHXkcOAdAPCmcwzJe8izm4biQx8t4uuQyL-vyWDBnhKLF73IkUxco_zIUpXTuusvnlgVgM0wXSxcRxoJ8TN4h3XhzbOwboJmenfIOBc");
+    background-size: cover;
+    background-position: center;
+    border-radius: 0.75rem;
+    text-align: center;
+    color: white;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-section p {
+    font-size: 1.25rem;
+    max-width: 30rem;
+    margin: 1rem auto 0 auto;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.featured-dishes {
+    padding: 4rem 1rem;
     text-align: center;
 }
 
+.dishes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.dish-card {
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+.dish-card .dish-image {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s;
+}
+
+.dish-card:hover .dish-image {
+    transform: scale(1.05);
+}
+
+.dish-image.pasta {
+    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuACKbi7eQW4iPqDq1p8UAE5aTBbrO3B0_vNQBtnZ3YonPI4ZkYyr6aRCIHZYhmqYfxAMJ4vmAD_iJIofWS1e_ei2BO4-Cj3nnbdljRiov-ZJI3rAgBfYwDopiCKIZ95-V010G8_bgsrSUCE_eaE9INxix6r6US2bQoVwCTbkOHio34-VedvznqzNEedU9vz2klUx_I7D1Z3wxjL2AV2SH-OrA1MSTfm3OBFXt8R0QDqqOZzr7p58qd1GdSs9XahSSs3wxAc8c8AfhE');
+}
+
+.dish-image.salmon {
+    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuARWE42q8I3XOK8Ezm9q3V5SRYh01iyPTer53RSu_10jxKkPrPLI9WL4RxeUlrukq_drHw4PJrerKepepUtPRh8viietvV0H7eMw6gYGvD3-kwN0TOE-t_o_bBaEcNhwVGyEqv2TwNX_YW79xF2elf-lp1rToC0Eg4dph3UITmomMZl9cvCpDzti5tFlBm7myDFnucbitZEWTJ-EoJaKh2qdATEqXosKkKejCVZ8UltyX1K2rAkAL0F-202rZihPs9CI8xhNRUj04g');
+}
+
+.dish-image.chocolate {
+    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAo7UfKSuQU13apUQ9Akov6-sO9OpP9IdDmpSH6fxrB050vgJ2jaQ6qby8AgeENloIKbwVaj5DdrHCQGDXe1IRF9c4M9RUVQSQpsH4cgDmzv9IJ7-vzrbpcDDZOLiufEOXK0L1Rj0PnK-eo_mXoRx8fBXydR8yPh27EGhm4I8LI0u6RfmYuDr1POC23T9y3wMcbPf0kdm8y-Ul2-ccN09rP6B9vM_oKD7EadFDr4oyk76iFKxnwieRsRok5rDAJPSSuDDSUg747eZU');
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.site-footer {
+    padding: 3rem 1rem;
+    text-align: center;
+    border-top: 1px solid rgba(236, 127, 19, 0.2);
+    color: #6b7280;
+    background-color: #f8f7f6;
+}
