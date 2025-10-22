@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - CRUD App</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
+
 <body>
 
     <!-- Header -->
@@ -19,18 +21,18 @@
 
         <nav class="site-nav">
             @if (Route::has('login'))
-                @auth
-                    <a href="{{ url('/dashboard') }}">Dashboard</a>
-                @else
-                    <a href="{{ route('welcome') }}">Home</a>
-                    <a href="{{ route('products') }}">Products</a>
-                    <a href="{{ route('about') }}">About</a>
-                    <a href="{{ route('login') }}">Log in</a>
+            @auth
+            <a href="{{ url('/dashboard') }}">Dashboard</a>
+            @else
+            <a href="{{ route('welcome') }}">Home</a>
+            <a href="{{ route('products') }}">Products</a>
+            <a href="{{ route('about') }}">About</a>
+            <a href="{{ route('login') }}">Log in</a>
 
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}">Register</a>
-                    @endif
-                @endauth
+            @if (Route::has('register'))
+            <a href="{{ route('register') }}">Register</a>
+            @endif
+            @endauth
             @endif
         </nav>
 
@@ -43,15 +45,18 @@
             <h2>Welcome Back</h2>
             <p>Log in to access your account</p>
 
-            <form action="#" method="POST" class="login-form">
+            <form action="{{ route('login') }}" method="POST" class="login-form">
+                @csrf
                 <div class="form-group">
                     <label for="email">Username or Email</label>
                     <input type="email" id="email" name="email" placeholder="Username or Email" required>
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" placeholder="Password" required>
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div>
 
                 <div class="form-footer">
@@ -74,4 +79,5 @@
     </footer>
 
 </body>
+
 </html>

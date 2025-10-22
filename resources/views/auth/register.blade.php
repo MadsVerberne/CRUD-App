@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - CRUD App</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
+
 <body>
 
     <!-- Header -->
@@ -19,18 +21,18 @@
 
         <nav class="site-nav">
             @if (Route::has('login'))
-                @auth
-                    <a href="{{ url('/dashboard') }}">Dashboard</a>
-                @else
-                    <a href="{{ route('welcome') }}">Home</a>
-                    <a href="{{ route('products') }}">Products</a>
-                    <a href="{{ route('about') }}">About</a>
-                    <a href="{{ route('login') }}">Log in</a>
+            @auth
+            <a href="{{ url('/dashboard') }}">Dashboard</a>
+            @else
+            <a href="{{ route('welcome') }}">Home</a>
+            <a href="{{ route('products') }}">Products</a>
+            <a href="{{ route('about') }}">About</a>
+            <a href="{{ route('login') }}">Log in</a>
 
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}">Register</a>
-                    @endif
-                @endauth
+            @if (Route::has('register'))
+            <a href="{{ route('register') }}">Register</a>
+            @endif
+            @endauth
             @endif
         </nav>
 
@@ -43,29 +45,35 @@
             <h2>Create Account</h2>
             <p>Register to get started</p>
 
-            <form action="#" method="POST" class="login-form">
+            <form action="{{ route('register') }}" method="POST" class="login-form">
+                @csrf
                 <div class="form-group">
                     <label for="name">Full Name</label>
                     <input type="text" id="name" name="name" placeholder="Full Name" required>
+                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email Address</label>
                     <input type="email" id="email" name="email" placeholder="Email Address" required>
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" placeholder="Password" required>
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div>
 
                 <div class="form-group">
                     <label for="password_confirmation">Confirm Password</label>
                     <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirm Password" required>
+                    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                 </div>
 
                 <button type="submit" class="btn-primary full">Register</button>
             </form>
+
 
             <p class="signup-text">
                 Already have an account?
@@ -78,6 +86,6 @@
     <footer class="site-footer">
         <p>© 2024 CRUD APP. All rights reserved.</p>
     </footer>
-
 </body>
+
 </html>

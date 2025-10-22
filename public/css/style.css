@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700;900&display=swap");
 
 body {
-    font-family: 'Epilogue', sans-serif;
+    font-family: "Epilogue", sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -20,7 +20,7 @@ main {
 }
 
 .text-shadow {
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* ========== HEADER ========== */
@@ -29,11 +29,11 @@ main {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2.5rem;
-    border-bottom: 1px solid rgba(236,127,19,0.2);
+    border-bottom: 1px solid rgba(236, 127, 19, 0.2);
     backdrop-filter: blur(5px);
     position: sticky;
     top: 0;
-    background-color: rgba(248,247,246,0.8);
+    background-color: rgba(248, 247, 246, 0.8);
     z-index: 10;
 }
 
@@ -112,21 +112,21 @@ main {
     border-radius: 0.75rem;
     text-align: center;
     color: white;
-    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), 
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)),
         url("https://lh3.googleusercontent.com/aida-public/AB6AXuA8SuRGqyu8ZImNDnvMsZekUcRISmUMEXktpdj3fV5DfblpHFDLCKh_v65-Nb3aEvGGSofGv72GE48Z96WhcsKmot9RBjYlsNGMkvndfndVofS-ycMeRiqtU715k7CLZRubHNXyFw2De5qjlh6uSgjs73XKmuCDTPCUBxu1IHXkcOAdAPCmcwzJe8izm4biQx8t4uuQyL-vyWDBnhKLF73IkUxco_zIUpXTuusvnlgVgM0wXSxcRxoJ8TN4h3XhzbOwboJmenfIOBc");
 }
 
 .hero-section h1 {
     font-size: 3rem;
     font-weight: 900;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-section p {
     font-size: 1.25rem;
     max-width: 30rem;
     margin: 1rem auto 0 auto;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* ========== FEATURED DISHES / CONTENT GRID ========== */
@@ -137,7 +137,7 @@ main {
 
 .dishes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
 }
@@ -159,15 +159,15 @@ main {
 }
 
 .dish-image.pasta {
-    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuACKbi7eQW4iPqDq1p8UAE5aTBbrO3B0_vNQBtnZ3YonPI4ZkYyr6aRCIHZYhmqYfxAMJ4vmAD_iJIofWS1e_ei2BO4-Cj3nnbdljRiov-ZJI3rAgBfYwDopiCKIZ95-V010G8_bgsrSUCE_eaE9INxix6r6US2bQoVwCTbkOHio34-VedvznqzNEedU9vz2klUx_I7D1Z3wxjL2AV2SH-OrA1MSTfm3OBFXt8R0QDqqOZzr7p58qd1GdSs9XahSSs3wxAc8c8AfhE');
+    background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuACKbi7eQW4iPqDq1p8UAE5aTBbrO3B0_vNQBtnZ3YonPI4ZkYyr6aRCIHZYhmqYfxAMJ4vmAD_iJIofWS1e_ei2BO4-Cj3nnbdljRiov-ZJI3rAgBfYwDopiCKIZ95-V010G8_bgsrSUCE_eaE9INxix6r6US2bQoVwCTbkOHio34-VedvznqzNEedU9vz2klUx_I7D1Z3wxjL2AV2SH-OrA1MSTfm3OBFXt8R0QDqqOZzr7p58qd1GdSs9XahSSs3wxAc8c8AfhE");
 }
 
 .dish-image.salmon {
-    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuARWE42q8I3XOK8Ezm9q3V5SRYh01iyPTer53RSu_10jxKkPrPLI9WL4RxeUlrukq_drHw4PJrerKepepUtPRh8viietvV0H7eMw6gYGvD3-kwN0TOE-t_o_bBaEcNhwVGyEqv2TwNX_YW79xF2elf-lp1rToC0Eg4dph3UITmomMZl9cvCpDzti5tFlBm7myDFnucbitZEWTJ-EoJaKh2qdATEqXosKkKejCVZ8UltyX1K2rAkAL0F-202rZihPs9CI8xhNRUj04g');
+    background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuARWE42q8I3XOK8Ezm9q3V5SRYh01iyPTer53RSu_10jxKkPrPLI9WL4RxeUlrukq_drHw4PJrerKepepUtPRh8viietvV0H7eMw6gYGvD3-kwN0TOE-t_o_bBaEcNhwVGyEqv2TwNX_YW79xF2elf-lp1rToC0Eg4dph3UITmomMZl9cvCpDzti5tFlBm7myDFnucbitZEWTJ-EoJaKh2qdATEqXosKkKejCVZ8UltyX1K2rAkAL0F-202rZihPs9CI8xhNRUj04g");
 }
 
 .dish-image.chocolate {
-    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAo7UfKSuQU13apUQ9Akov6-sO9OpP9IdDmpSH6fxrB050vgJ2jaQ6qby8AgeENloIKbwVaj5DdrHCQGDXe1IRF9c4M9RUVQSQpsH4cgDmzv9IJ7-vzrbpcDDZOLiufEOXK0L1Rj0PnK-eo_mXoRx8fBXydR8yPh27EGhm4I8LI0u6RfmYuDr1POC23T9y3wMcbPf0kdm8y-Ul2-ccN09rP6B9vM_oKD7EadFDr4oyk76iFKxnwieRsRok5rDAJPSSuDDSUg747eZU');
+    background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAo7UfKSuQU13apUQ9Akov6-sO9OpP9IdDmpSH6fxrB050vgJ2jaQ6qby8AgeENloIKbwVaj5DdrHCQGDXe1IRF9c4M9RUVQSQpsH4cgDmzv9IJ7-vzrbpcDDZOLiufEOXK0L1Rj0PnK-eo_mXoRx8fBXydR8yPh27EGhm4I8LI0u6RfmYuDr1POC23T9y3wMcbPf0kdm8y-Ul2-ccN09rP6B9vM_oKD7EadFDr4oyk76iFKxnwieRsRok5rDAJPSSuDDSUg747eZU");
 }
 
 .center {
@@ -181,7 +181,7 @@ main {
     padding: 40px 10%;
     background-color: #f8f7f6;
     color: #221910;
-    font-family: 'Epilogue', sans-serif;
+    font-family: "Epilogue", sans-serif;
 }
 
 /* Hero */
@@ -199,7 +199,7 @@ main {
 .about-hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC8YZpXZrqIZYsRS7EcrDBQPDhaH853I77QEWKJSyD_vAx4ngi0n3zsgezhTwe_hlhSivXx8mnvp4W-AFBAqaq2tW53pdP07Ua1nJ_ANrlUgCbcW4-DKqgZqKxDNjWaMieuzTY6XBZdknYxoymUskeoB3JeqF_TP5gCVqGk6DKWjLh8cW8yiPNQSA_2IvScBdNBDB9bDGGDfKzLvToaXrmIXWYPZo8AnoXSvh8oYG_J4HmmO_E8PhD9AFgeAaXzpfjAw5YKrvZxwaU');
+    background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC8YZpXZrqIZYsRS7EcrDBQPDhaH853I77QEWKJSyD_vAx4ngi0n3zsgezhTwe_hlhSivXx8mnvp4W-AFBAqaq2tW53pdP07Ua1nJ_ANrlUgCbcW4-DKqgZqKxDNjWaMieuzTY6XBZdknYxoymUskeoB3JeqF_TP5gCVqGk6DKWjLh8cW8yiPNQSA_2IvScBdNBDB9bDGGDfKzLvToaXrmIXWYPZo8AnoXSvh8oYG_J4HmmO_E8PhD9AFgeAaXzpfjAw5YKrvZxwaU");
     background-size: cover;
     background-position: center;
     filter: brightness(0.5);
@@ -287,7 +287,6 @@ main {
     text-decoration: underline;
 }
 
-
 /* ========== LOGIN PAGE ========== */
 .login-container {
     display: flex;
@@ -302,7 +301,7 @@ main {
     background: #ffffff;
     padding: 2.5rem 3rem;
     border-radius: 0.75rem;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
     max-width: 400px;
     width: 100%;
     text-align: center;
@@ -386,7 +385,7 @@ main {
 .site-footer {
     padding: 3rem 1rem;
     text-align: center;
-    border-top: 1px solid rgba(236,127,19,0.2);
+    border-top: 1px solid rgba(236, 127, 19, 0.2);
     color: #6b7280;
     background-color: #f8f7f6;
 }
@@ -442,12 +441,13 @@ main {
     width: 100%;
     border-collapse: collapse;
     background-color: white;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     border-radius: 8px;
     overflow: hidden;
 }
 
-.menu-table th, .menu-table td {
+.menu-table th,
+.menu-table td {
     padding: 14px 18px;
     text-align: left;
 }
