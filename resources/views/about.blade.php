@@ -11,72 +11,48 @@
 <body class="bg-background-light">
 
     <!-- Header / Nav -->
-    <header class="site-header">
-        <div class="logo">
-            <svg class="logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
-            </svg>
-            <h2 class="logo-text">CRUD APP</h2>
-        </div>
-
-        <nav class="site-nav">
-            @if (Route::has('login'))
-            @auth
-            <a href="{{ url('/dashboard') }}">Dashboard</a>
-            @else
-            <a href="{{ route('welcome') }}">Home</a>
-            <a href="{{ route('products') }}">Products</a>
-            <a href="{{ route('about') }}">About</a>
-            <a href="{{ route('login') }}">Log in</a>
-
-            @if (Route::has('register'))
-            <a href="{{ route('register') }}">Register</a>
-            @endif
-            @endauth
-            @endif
-        </nav>
-
-        <button class="btn-primary">Bestel nu</button>
-    </header>
+    @include('partials.header')
 
     <!-- Hero Section -->
     <main class="about-container">
 
         <!-- Hero / Banner -->
         <section class="about-hero">
-            <div class="about-hero-bg"></div>
-            <div class="about-hero-text">
-                <h1>Het Verhaal van CRUD APP</h1>
-                <p>Passie voor authentiek eten en een gebruiksvriendelijke ervaring, sinds 2010.</p>
+            <div>
+                <h1>About CRUD APP</h1>
+                <p>Passion for simplicity, technology, and quality since 2010.</p>
             </div>
         </section>
 
         <!-- History -->
         <section class="about-section">
-            <h2>Onze Geschiedenis</h2>
+            <h2>Our History</h2>
             <p>
-                CRUD APP is opgericht in 2010 met een visie om simpele en effectieve webapplicaties te creëren voor iedereen. Wat begon als een klein project is uitgegroeid tot een volwaardige CRUD-oplossing voor vele gebruikers.
+                CRUD APP was founded in 2010 with a vision to create simple and effective web applications for everyone.
+                What started as a small project has grown into a full-featured CRUD solution used by many people.
             </p>
         </section>
 
         <!-- Philosophy -->
         <section class="about-section">
-            <h2>Onze Filosofie</h2>
+            <h2>Our Philosophy</h2>
             <p>
-                Wij geloven in eenvoud en kwaliteit. Elke functie in onze applicatie is ontworpen met de gebruiker in gedachten. Onze missie is om het leven van onze gebruikers makkelijker en productiever te maken.
+                We believe in simplicity and quality. Every feature in our application is designed with the user in mind.
+                Our mission is to make our users' lives easier and more productive.
             </p>
         </section>
 
-        <!-- Team / Chef -->
+        <!-- Team / Founder -->
         <section class="about-section about-team">
-            <h2>Ons Team</h2>
+            <h2>Our Team</h2>
             <div class="team-member">
                 <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBw2Hl5Rs-x6LtcPNpQjgTa4N20-eXIur3YGNJ-JXnxmh3-0UBbTNuCY2_Os4GUPGZ6AufgwLcYalQEe04hbC6Gb4q5uUAB--DItff2BQW0zfSrC0yt-a-ZgX0TNVuAMivFQcxBVWxx7VgS0BjI7OQ4n3VCJiEJFbeAA6viqcUMamHnZ56doX4_Cb_Q471epBSoWfVwLs4KvJlK8o1ARLyaIV2mSTsgrJcwSEvJtoYCK4sN0ZKmrSKt_wOPY-WZhDjxyh6ldRnLg0o" alt="Team Lead">
                 <div class="team-info">
                     <h3>Marco Rossi</h3>
-                    <p class="team-role">Oprichter & CEO</p>
+                    <p class="team-role">Founder & CEO</p>
                     <p>
-                        Marco Rossi heeft meer dan 20 jaar ervaring in de technologie en development. Hij is de drijvende kracht achter CRUD APP en zorgt dat alles soepel en efficiënt werkt.
+                        Marco Rossi has over 20 years of experience in technology and development.
+                        He is the driving force behind CRUD APP and ensures everything runs smoothly and efficiently.
                     </p>
                 </div>
             </div>
@@ -84,31 +60,28 @@
 
         <!-- Contact & Location -->
         <section class="about-section about-contact">
-            <h2>Locatie & Contact</h2>
+            <h2>Location & Contact</h2>
             <div class="contact-details">
                 <div>
-                    <h4>Adres</h4>
-                    <p>Kerkstraat 12, 1000 Brussel</p>
+                    <h4>Address</h4>
+                    <p>Church Street 12, 1000 Brussels</p>
                 </div>
                 <div>
-                    <h4>Openingstijden</h4>
-                    <p>Maandag - Vrijdag: 09:00 - 18:00</p>
+                    <h4>Opening Hours</h4>
+                    <p>Monday - Friday: 09:00 - 18:00</p>
                 </div>
                 <div>
                     <h4>Contact</h4>
-                    <p>Telefoon: <a href="tel:021234567">02 123 45 67</a></p>
-                    <p>E-mail: <a href="mailto:info@crudapp.be">info@crudapp.be</a></p>
+                    <p>Phone: <a href="tel:021234567">02 123 45 67</a></p>
+                    <p>Email: <a href="mailto:info@crudapp.be">info@crudapp.be</a></p>
                 </div>
             </div>
         </section>
 
     </main>
 
-
     <!-- Footer -->
-    <footer class="site-footer">
-        <p>© 2025 CRUD APP. Alle rechten voorbehouden.</p>
-    </footer>
+    @include('partials.footer')
 
 </body>
 

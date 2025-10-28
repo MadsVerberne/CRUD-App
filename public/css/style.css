@@ -9,6 +9,7 @@ body {
 
 main {
     padding: 20px;
+    background-color: #f8f7f6;
 }
 
 .bg-background-light {
@@ -43,16 +44,26 @@ main {
     gap: 0.5rem;
 }
 
-.logo-icon {
-    width: 1.5rem;
-    height: 1.5rem;
-    color: #ec7f13;
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none; /* verwijdert underline */
+    color: #000; /* zwart */
 }
 
 .logo-text {
     font-size: 1.25rem;
     font-weight: 700;
+    margin: 0; /* voorkom extra margin van h2 */
 }
+
+.logo-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #ec7f13; /* houd het icoon oranje */
+}
+
 
 .site-nav a {
     margin-left: 1.5rem;
@@ -71,13 +82,24 @@ main {
 .btn-outline {
     cursor: pointer;
     transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-prim {
+    background-color: #ec7f13;
+    color: #fff;
+    padding: 0.625rem 2rem;
+    font-weight: bold;
+    border-radius: 0.25rem;
+    border: none;
+    margin-top: 20px;
+    cursor: pointer;
 }
 
 .btn-primary {
     background-color: #ec7f13;
     color: #fff;
     padding: 0.625rem 2rem;
-    margin-top: 20px;
     font-weight: bold;
     border-radius: 0.25rem;
     border: none;
@@ -185,43 +207,35 @@ main {
 }
 
 /* Hero */
+/* ===== ABOUT HERO (zelfde stijl als homepage hero) ===== */
 .about-hero {
-    position: relative;
-    min-height: 40vh;
     display: flex;
-    align-items: center;
     justify-content: center;
-    margin-bottom: 60px;
-    text-align: center;
-    color: white;
-}
-
-.about-hero-bg {
-    position: absolute;
-    inset: 0;
-    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC8YZpXZrqIZYsRS7EcrDBQPDhaH853I77QEWKJSyD_vAx4ngi0n3zsgezhTwe_hlhSivXx8mnvp4W-AFBAqaq2tW53pdP07Ua1nJ_ANrlUgCbcW4-DKqgZqKxDNjWaMieuzTY6XBZdknYxoymUskeoB3JeqF_TP5gCVqGk6DKWjLh8cW8yiPNQSA_2IvScBdNBDB9bDGGDfKzLvToaXrmIXWYPZo8AnoXSvh8oYG_J4HmmO_E8PhD9AFgeAaXzpfjAw5YKrvZxwaU');
+    align-items: center;
+    min-height: 50vh;
     background-size: cover;
     background-position: center;
-    filter: brightness(0.5);
-    z-index: 0;
-}
-
-.about-hero-text {
-    position: relative;
-    z-index: 1;
+    border-radius: 0.75rem;
+    text-align: center;
+    color: white;
+    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)),
+        url("https://lh3.googleusercontent.com/aida-public/AB6AXuC8YZpXZrqIZYsRS7EcrDBQPDhaH853I77QEWKJSyD_vAx4ngi0n3zsgezhTwe_hlhSivXx8mnvp4W-AFBAqaq2tW53pdP07Ua1nJ_ANrlUgCbcW4-DKqgZqKxDNjWaMieuzTY6XBZdknYxoymUskeoB3JeqF_TP5gCVqGk6DKWjLh8cW8yiPNQSA_2IvScBdNBDB9bDGGDfKzLvToaXrmIXWYPZo8AnoXSvh8oYG_J4HmmO_E8PhD9AFgeAaXzpfjAw5YKrvZxwaU");
+    background-repeat: no-repeat;
 }
 
 .about-hero h1 {
     font-size: 3rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
+    font-weight: 900;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .about-hero p {
-    font-size: 1.2rem;
-    max-width: 600px;
-    margin: 0 auto;
+    font-size: 1.25rem;
+    max-width: 30rem;
+    margin: 1rem auto 0 auto;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
+
 
 /* Sections */
 .about-section {
@@ -339,7 +353,7 @@ main {
 }
 
 .form-group input {
-    width: 100%;
+    width: 94%;
     padding: 0.75rem;
     border: 1px solid #ddd6ce;
     border-radius: 0.5rem;
@@ -490,4 +504,320 @@ main {
 .tag.dessert {
     background-color: #f8bbd0;
     color: #ad1457;
+}
+
+/* ================= CONTACT PAGE ================= */
+.contact-container {
+    padding: 2rem 10%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.contact-container h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #221910;
+}
+
+.contact-container p {
+    font-size: 1rem;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 3rem auto;
+    color: #7e7368;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.contact-form {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+}
+
+.contact-form .form-group {
+    margin-bottom: 1rem;
+}
+
+.contact-form label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    color: #4b4b4b;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 94%;
+    padding: 0.75rem;
+    border: 1px solid #ddd6ce;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #ec7f13;
+}
+
+.contact-form button {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+/* Contact Info */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    color: #7e7368;
+}
+
+.contact-info p {
+    margin-bottom: 1.5rem;
+}
+
+.contact-info h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #221910;
+    text-align: center;
+}
+
+.contact-info a {
+    color: #ec7f13;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.contact-info img {
+    border-radius: 0.75rem;
+    object-fit: cover;
+    width: 100%;
+    height: 250px;
+}
+
+/* ===== CONTAINER ===== */
+.management-container {
+    padding: 40px 10%;
+    background-color: #f8f7f6;
+    color: #221910;
+}
+
+/* ===== HEADER ===== */
+.management-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.management-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #221910;
+}
+
+/* ===== BUTTONS ===== */
+.btn-primary {
+    background-color: #ec7f13;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #d46f0f;
+}
+
+.btn-edit, .btn-delete {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-edit {
+    color: #ec7f13;
+}
+
+.btn-edit:hover {
+    opacity: 0.8;
+}
+
+.btn-delete {
+    color: #f56565;
+}
+
+.btn-delete:hover {
+    color: #c53030;
+}
+
+/* ===== TABLE ===== */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.table-wrapper table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table-wrapper th,
+.table-wrapper td {
+    padding: 14px 18px;
+    text-align: left;
+}
+
+.table-wrapper thead {
+    background-color: #ec7f13;
+    color: white;
+}
+
+.table-wrapper tbody tr:nth-child(even) {
+    background-color: #f3f3f3;
+}
+
+/* ===== BADGES / TYPE ===== */
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Badge colors like menu page */
+.badge.Starter {
+    background-color: #ffe0b2;
+    color: #e65100;
+}
+
+.badge.Main {
+    background-color: #d1c4e9;
+    color: #4527a0;
+}
+
+.badge.Dessert {
+    background-color: #f8bbd0;
+    color: #ad1457;
+}
+
+/* ===== ID COLUMN ===== */
+.table-wrapper td.id {
+    font-weight: 600;
+    color: #221910;
+}
+
+/* ===== IMAGE ===== */
+.table-wrapper img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Flex container for action buttons */
+.table-wrapper td div {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+
+.form-wrapper {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ec7f13;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.form-group {
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    padding: 10px;
+    border: 1px solid #ec7f13;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    color: #221910;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn-cancel {
+    background-color: #f3f3f3;
+    border: 1px solid #ec7f13;
+    color: #221910;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-cancel:hover {
+    background-color: #e6e6e6;
+}
+
+.btn-save {
+    background-color: #ec7f13;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-save:hover {
+    background-color: #d46f0f;
+}
+
+span {
+    text-decoration: none;
 }

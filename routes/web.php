@@ -20,6 +20,19 @@ Route::get('/login', function () {
     return view('login');
 })->name('login');
 
+Route::get('/management', function () {
+    return view('management');
+})->name('management');
+
+Route::get('/addproduct', function () {
+    return view('addproduct');
+})->name('addproduct');
+
+Route::get('/editproduct/{id}', function ($id) {
+    return view('editproduct', ['id' => $id]);
+})->name('editproduct');
+
+
 Route::get('/products', [ProductController::class, 'index'])->name('products');
 
 Route::get('/dashboard', function () {
