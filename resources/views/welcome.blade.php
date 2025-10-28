@@ -10,49 +10,48 @@
 
 <body>
 
-    <!-- Header / Nav -->
-    @include('partials.header')
+    @include('layouts.navigation')
 
     <!-- Hero Section -->
     <main>
         <section class="hero-section">
             <div class="hero-content">
                 <h1>CRUD APP</h1>
-                <p>Where every meal tells a story</p>
-                <button class="btn-prim">View menu</button>
+                <p>Waar elke maaltijd een verhaal vertelt</p>
+                <a href="{{ route('products') }}" class="btn-primary">Bekijk menu</a>
             </div>
         </section>
 
         <!-- Featured Dishes -->
         <section class="featured-dishes">
-            <h2>Featured Dishes</h2>
+            <h2>Uitgelichte gerechten</h2>
             <div class="dishes-grid">
                 <div class="dish-card">
                     <div class="dish-image pasta"></div>
                     <h3>Pasta Primavera</h3>
-                    <p>Fresh pasta with seasonal vegetables</p>
+                    <p>Verse pasta met seizoensgroenten</p>
                 </div>
                 <div class="dish-card">
                     <div class="dish-image salmon"></div>
-                    <h3>Grilled Salmon with Lemon</h3>
-                    <p>Perfectly grilled salmon with a hint of lemon</p>
+                    <h3>Gegrilde zalm met citroen</h3>
+                    <p>Perfect gegrilde zalm met een vleugje citroen</p>
                 </div>
                 <div class="dish-card">
                     <div class="dish-image chocolate"></div>
-                    <h3>Chocolate Lava Cake</h3>
-                    <p>Warm chocolate dessert with a molten center</p>
+                    <h3>Chocolade lava cake</h3>
+                    <p>Warm chocolade dessert met vloeibare kern</p>
                 </div>
             </div>
             <div class="center">
-                <a href="{{ route('products') }}">
-                    <button class="btn-outline">View full menu</button>
-                </a>
+                <a href="{{ route('products') }}" class="btn-outline">Bekijk het volledige menu</a>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    @include('partials.footer')
+    <footer class="site-footer">
+        <p>© 2025 CRUD APP. Alle rechten voorbehouden.</p>
+    </footer>
 
 </body>
 
