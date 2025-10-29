@@ -8,7 +8,11 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
-<body>
+<body
+    data-success="{{ session('success') }}"
+    data-error="{{ session('error') }}"
+    data-errors='@json($errors->all())'>
+
 
     @include('layouts.navigation')
 

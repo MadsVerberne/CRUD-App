@@ -45,7 +45,7 @@ use Illuminate\Support\Str;
                         <td>{{ $product->id }}</td>
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->description }}</td>
-                        <td><img src="{{ asset('images/' . $product->image) }}" width="100"></td>
+                        <td><img src="{{ $product->image_url }}" width="100" alt="{{ $product->name }}"></td>
                         <td>€{{ number_format($product->price, 2, ',', '.') }}</td>
                         <td><span class="tag {{ Str::slug($product->type) }}">{{ $product->type }}</span></td>
                     </tr>

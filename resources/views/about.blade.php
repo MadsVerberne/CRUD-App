@@ -82,6 +82,7 @@
     <footer class="site-footer">
         <p>© 2025 CRUD APP. Alle rechten voorbehouden.</p>
     </footer>
+    <script src="{{ asset('js/alerts.js') }}"></script>
 
 </body>
 

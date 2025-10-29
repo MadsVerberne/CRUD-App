@@ -8,10 +8,14 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
-<body>
+<body
+    data-success="{{ session('success') }}"
+    data-error="{{ session('error') }}"
+    data-errors='@json($errors->all())'>
+
 
     <!-- Header / Nav -->
-    @include('partials.header')
+    @include('layouts.navigation')
 
     <!-- Main -->
     <main class="management-container">
@@ -37,87 +41,30 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($products as $product)
                     <tr>
-                        <td class="id">1</td>
-                        <td><img src="https://images.unsplash.com/photo-1604908177523-894c621e2f22?crop=entropy&cs=tinysrgb&fit=crop&h=60&w=60" alt="Caesar Salad"></td>
-                        <td>Caesar Salad</td>
-                        <td>Fresh romaine lettuce with croutons and Parmesan cheese.</td>
-                        <td>€12.50</td>
-                        <td><span class="badge Starter">Starter</span></td>
+                        <td class="id">{{ $product->id }}</td>
+                        <td><img src="{{ $product->image_url }}" width="100" alt="{{ $product->name }}"></td>
+                        <td>{{ $product->name }}</td>
+                        <td>{{ $product->description }}</td>
+                        <td>€{{ number_format($product->price, 2) }}</td>
+                        <td><span class="badge {{ $product->type }}">{{ $product->type }}</span></td>
                         <td>
                             <div>
-                                <a href="{{ route('editproduct', ['id' => 1]) }}" class="btn-edit">
+                                <a href="{{ route('editproduct', $product->id) }}" class="btn-edit">
                                     <span class="material-symbols-outlined">edit</span>
                                 </a>
-                                <button class="btn-delete"><span class="material-symbols-outlined">delete</span></button>
+                                <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn-delete" onclick="return confirm('Are you sure you want to delete this product?')">
+                                        <span class="material-symbols-outlined">delete</span>
+                                    </button>
+                                </form>
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="id">2</td>
-                        <td><img src="https://images.unsplash.com/photo-1603133872879-3f7b98786f16?crop=entropy&cs=tinysrgb&fit=crop&h=60&w=60" alt="Spaghetti Carbonara"></td>
-                        <td>Spaghetti Carbonara</td>
-                        <td>Spaghetti with bacon, egg, and Parmesan cheese.</td>
-                        <td>€16.00</td>
-                        <td><span class="badge Main">Main</span></td>
-                        <td>
-                            <div>
-                                <a href="{{ route('editproduct', ['id' => 1]) }}" class="btn-edit">
-                                    <span class="material-symbols-outlined">edit</span>
-                                </a>
-                                <button class="btn-delete"><span class="material-symbols-outlined">delete</span></button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="id">3</td>
-                        <td><img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?crop=entropy&cs=tinysrgb&fit=crop&h=60&w=60" alt="Tiramisu"></td>
-                        <td>Tiramisu</td>
-                        <td>Italian dessert with coffee, mascarpone, and cocoa.</td>
-                        <td>€8.00</td>
-                        <td><span class="badge Dessert">Dessert</span></td>
-                        <td>
-                            <div>
-                                <a href="{{ route('editproduct', ['id' => 1]) }}" class="btn-edit">
-                                    <span class="material-symbols-outlined">edit</span>
-                                </a>
-                                <button class="btn-delete"><span class="material-symbols-outlined">delete</span></button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="id">4</td>
-                        <td><img src="https://images.unsplash.com/photo-1617196037818-6044b3a0e3f1?crop=entropy&cs=tinysrgb&fit=crop&h=60&w=60" alt="Grilled Salmon"></td>
-                        <td>Grilled Salmon</td>
-                        <td>Salmon fillet grilled with lemon and herbs.</td>
-                        <td>€22.00</td>
-                        <td><span class="badge Main">Main</span></td>
-                        <td>
-                            <div>
-                                <a href="{{ route('editproduct', ['id' => 1]) }}" class="btn-edit">
-                                    <span class="material-symbols-outlined">edit</span>
-                                </a>
-                                <button class="btn-delete"><span class="material-symbols-outlined">delete</span></button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="id">5</td>
-                        <td><img src="https://images.unsplash.com/photo-1601924582975-c7f91a3f99b5?crop=entropy&cs=tinysrgb&fit=crop&h=60&w=60" alt="Tomato Soup"></td>
-                        <td>Tomato Soup</td>
-                        <td>Homemade tomato soup with fresh basil.</td>
-                        <td>€7.50</td>
-                        <td><span class="badge Starter">Starter</span></td>
-                        <td>
-                            <div>
-                                <a href="{{ route('editproduct', ['id' => 1]) }}" class="btn-edit">
-                                    <span class="material-symbols-outlined">edit</span>
-                                </a>
-                                <button class="btn-delete"><span class="material-symbols-outlined">delete</span></button>
-                            </div>
-                        </td>
-
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -125,6 +72,7 @@
 
     <!-- Footer -->
     @include('partials.footer')
+    <script src="{{ asset('js/alerts.js') }}"></script>
 
 </body>
 

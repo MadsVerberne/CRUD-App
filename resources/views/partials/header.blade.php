@@ -11,18 +11,18 @@
 
     <nav class="site-nav">
         @if (Route::has('login'))
-            @auth
-                <a href="{{ url('/dashboard') }}">Dashboard</a>
-            @else
-                <a href="{{ route('welcome') }}">Home</a>
-                <a href="{{ route('products') }}">Products</a>
-                <a href="{{ route('about') }}">About</a>
-                <a href="{{ route('login') }}">Log in</a>
+        @auth
+        <a href="{{ url('/management') }}">Management</a>
+        @else
+        <a href="{{ route('welcome') }}">Home</a>
+        <a href="{{ route('products') }}">Products</a>
+        <a href="{{ route('about') }}">About</a>
+        <a href="{{ route('login') }}">Log in</a>
 
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}">Register</a>
-                @endif
-            @endauth
+        @if (Route::has('register'))
+        <a href="{{ route('register') }}">Register</a>
+        @endif
+        @endauth
         @endif
     </nav>
 

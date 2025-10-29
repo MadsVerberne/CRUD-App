@@ -8,7 +8,11 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
-<body>
+<body
+    data-success="{{ session('success') }}"
+    data-error="{{ session('error') }}"
+    data-errors='@json($errors->all())'>
+
 
     <!-- Header -->
     <header class="site-header">
@@ -22,7 +26,7 @@
         <nav class="site-nav">
             @if (Route::has('login'))
             @auth
-            <a href="{{ url('/dashboard') }}">Dashboard</a>
+            <a href="{{ url('/management') }}">management</a>
             @else
             <a href="{{ route('welcome') }}">Home</a>
             <a href="{{ route('products') }}">Products</a>

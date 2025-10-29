@@ -13,7 +13,7 @@
             <a href="{{ route('welcome') }}">Home</a>
             <a href="{{ route('products') }}">Products</a>
             <a href="{{ route('about') }}">About</a>
-            <a href="{{ url('/dashboard') }}">Dashboard</a>
+            <a href="{{ url('/management') }}">Management</a>
             <a href="#"
                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 Logout
