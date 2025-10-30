@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,9 @@ class ManagementController extends Controller
 {
     public function index()
     {
-        $products = Product::all(); // collectie van alle producten
-        return view('management', compact('products'));
+        $products = Product::all();
+        $categories = Category::all();
+
+        return view('management', compact('products', 'categories'));
     }
 }

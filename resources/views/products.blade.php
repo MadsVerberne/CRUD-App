@@ -20,11 +20,16 @@ use Illuminate\Support\Str;
         <section class="menu-header">
             <h1>Our Menu</h1>
             <div class="menu-filters">
-                <button class="filter-btn" data-type="appetizer">Appetizers</button>
-                <button class="filter-btn" data-type="main-course">Main Courses</button>
-                <button class="filter-btn" data-type="dessert">Desserts</button>
-                <button class="filter-btn" data-type="all">All</button>
+                @foreach($categories as $cat)
+                <a href="{{ route('products.category', $cat) }}" class="filter-btn {{ isset($category) && $category->id == $cat->id ? 'active' : '' }}">
+                    {{ $cat->name }}
+                </a>
+                @endforeach
+                <a href="{{ route('products') }}" class="filter-btn {{ !isset($category) ? 'active' : '' }}">All</a>
             </div>
+
+
+
         </section>
 
         <section class="menu-table-section">
@@ -36,7 +41,7 @@ use Illuminate\Support\Str;
                         <th>Description</th>
                         <th>Image</th>
                         <th>Price</th>
-                        <th>Type</th>
+                        <th>Categorien</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,7 +52,11 @@ use Illuminate\Support\Str;
                         <td>{{ $product->description }}</td>
                         <td><img src="{{ $product->image_url }}" width="100" alt="{{ $product->name }}"></td>
                         <td>€{{ number_format($product->price, 2, ',', '.') }}</td>
-                        <td><span class="tag {{ Str::slug($product->type) }}">{{ $product->type }}</span></td>
+                        <td>
+                            @foreach($product->categories as $category)
+                            <span class="badge">{{ $category->name }}</span>
+                            @endforeach
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -57,35 +66,9 @@ use Illuminate\Support\Str;
 
 
     <!-- Footer -->
-    <footer class="site-footer">
-        <p>© 2024 CRUD APP. All rights reserved.</p>
-    </footer>
+    @include('partials.footer')
 
 
 </body>
 
 </html>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const buttons = document.querySelectorAll('.filter-btn');
-        const rows = document.querySelectorAll('.menu-table tbody tr');
-
-        buttons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const type = btn.getAttribute('data-type');
-
-                rows.forEach(row => {
-                    if (type === 'all' || row.classList.contains(type)) {
-                        row.style.display = '';
-                    } else {
-                        row.style.display = 'none';
-                    }
-                });
-
-                // Active styling
-                buttons.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-            });
-        });
-    });
-</script>

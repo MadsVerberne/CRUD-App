@@ -7,62 +7,93 @@
     <title>Edit Product - CRUD App</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
 </head>
 
-<body class="bg-background-light dark:bg-background-dark font-display text-background-dark dark:text-background-light">
+<body>
 
-    <!-- Header / Nav -->
     @include('partials.header')
 
-    <!-- Main -->
     <main class="management-container">
         <div class="management-header">
             <h1>Edit Product</h1>
-            <a href="{{ route('management') }}" class="btn-cancel">
-                <span>Back to Management</span>
-            </a>
+            <a href="{{ route('management') }}" class="btn-cancel">Back to Management</a>
         </div>
 
-        <div class="form-wrapper">
-            <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                @method('PUT')
-                <div class="form-group">
-                    <label for="image">Product Image</label>
-                    <input type="file" name="image" id="image" accept="image/*">
-                    @if($product->image)
-                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" width="150">
-                    @endif
-                </div>
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="name" value="{{ $product->name }}" required>
-                </div>
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea name="description" id="description" required>{{ $product->description }}</textarea>
-                </div>
-                <div class="form-group">
-                    <label for="price">Price</label>
-                    <input type="number" name="price" id="price" value="{{ $product->price }}" step="0.01" required>
-                </div>
-                <div class="form-group">
-                    <label for="type">Type</label>
-                    <select name="type" id="type" required>
-                        <option value="Starter" {{ $product->type == 'Appetizer' ? 'selected' : '' }}>Appetizer</option>
-                        <option value="Main Course" {{ $product->type == 'Main Course' ? 'selected' : '' }}>Main Course</option>
-                        <option value="Dessert" {{ $product->type == 'Dessert' ? 'selected' : '' }}>Dessert</option>
-                    </select>
-                </div>
-                <button type="submit">Update</button>
-            </form>
+        <!-- Success / Error messages -->
+        @if(session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
+        @if ($errors->any())
+        <div class="alert alert-error">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
         </div>
+        @endif
+        <div class="form-group">
+            <label>Existing Images</label>
+            <div class="existing-images">
+                @foreach($product->images as $image)
+                <div class="image-container">
+                    <img src="{{ asset('storage/' . $image->path) }}" width="100">
+                    <form action="{{ route('products.image.destroy', $image->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" onclick="return confirm('Weet je zeker dat je deze afbeelding wilt verwijderen?')">
+                            Delete
+                        </button>
+                    </form>
+                </div>
+                @endforeach
+            </div>
+        </div>
+
+        <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+
+            <div class="form-group">
+                <label for="images">Add New Images</label>
+                <input type="file" name="images[]" id="images" multiple>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" value="{{ $product->name }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea name="description" id="description" required>{{ $product->description }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" name="price" id="price" value="{{ $product->price }}" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label>Categories</label>
+                <div class="checkbox-group">
+                    @foreach($categories as $category)
+                    <label>
+                        <input type="checkbox" name="categories[]" value="{{ $category->id }}"
+                            {{ $product->categories->contains($category->id) ? 'checked' : '' }}>
+                        {{ $category->name }}
+                    </label>
+                    @endforeach
+                </div>
+            </div>
+
+            <button type="submit">Update Product</button>
+        </form>
     </main>
 
-    <!-- Footer -->
     @include('partials.footer')
-    <script src="{{ asset('js/alerts.js') }}"></script>
 
 </body>
 

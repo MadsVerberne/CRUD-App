@@ -2,82 +2,122 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product; // Vergeet dit niet!
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-    // 1️⃣ Lijst van producten
-    public function index()
+    public function index(Category $category = null)
     {
-        $products = Product::all();
-        return view('products', compact('products'));
+        $categories = Category::all();
+
+        if ($category) {
+            $products = $category->products()->get();
+        } else {
+            $products = Product::all();
+        }
+
+        return view('products', compact('products', 'categories', 'category'));
     }
 
-    // 2️⃣ Formulier voor nieuw product
     public function create()
     {
-        return view('addproduct');
+        $categories = Category::all();
+        return view('addproduct', compact('categories'));
     }
 
-    // 3️⃣ Product opslaan
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'price' => 'required|numeric',
-            'type' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'categories' => 'required|array',
         ]);
 
-        if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('images', 'public');
+        // Product aanmaken
+        $product = Product::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+        ]);
+
+        // Pivot table vullen
+        $product->categories()->attach($request->categories);
+
+        // Afbeeldingen opslaan
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $file) {
+                $path = $file->store('products', 'public');
+                $product->images()->create(['path' => $path]);
+            }
         }
 
-        Product::create($validated);
-
-        return redirect()->route('products')->with('success', 'Product toegevoegd!');
+        return redirect()->route('management')->with('success', 'Product toegevoegd!');
     }
 
-    // 4️⃣ Formulier voor bewerken
     public function edit(Product $product)
     {
-        return view('editproduct', compact('product'));
+        $categories = Category::all();
+        return view('editproduct', compact('product', 'categories'));
     }
 
-    // 5️⃣ Product bijwerken
     public function update(Request $request, Product $product)
     {
-        $validated = $request->validate([
+        $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'price' => 'required|numeric',
-            'type' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'categories' => 'required|array',
         ]);
 
-        if ($request->hasFile('image')) {
-            if ($product->image) {
-                Storage::disk('public')->delete($product->image);
+        $product->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+        ]);
+
+        // Sync categories
+        $product->categories()->sync($request->categories);
+
+        // Voeg nieuwe afbeeldingen toe
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $file) {
+                $path = $file->store('products', 'public');
+                $product->images()->create(['path' => $path]);
             }
-            $validated['image'] = $request->file('image')->store('images', 'public');
         }
 
-        $product->update($validated);
-
-        return redirect()->route('products')->with('success', 'Product bijgewerkt!');
+        return redirect()->back()->with('success', 'Product bijgewerkt!');
     }
+
+
     public function destroy(Product $product)
     {
-        // Verwijder afbeelding als die bestaat
-        if ($product->image && file_exists(storage_path('app/public/' . $product->image))) {
-            unlink(storage_path('app/public/' . $product->image));
+        foreach ($product->images as $image) {
+            if (Storage::disk('public')->exists($image->path)) {
+                Storage::disk('public')->delete($image->path);
+            }
+            $image->delete();
         }
 
         $product->delete();
 
-        return redirect()->route('products')->with('success', 'Product deleted successfully!');
+
+        return redirect()->route('products')->with('success', 'Product verwijderd!');
+    }
+
+    public function destroyImage(\App\Models\ProductImage $image)
+    {
+        if (Storage::disk('public')->exists($image->path)) {
+            Storage::disk('public')->delete($image->path);
+        }
+        $image->delete();
+
+        return back()->with('success', 'Afbeelding verwijderd!');
     }
 }
