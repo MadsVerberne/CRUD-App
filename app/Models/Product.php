@@ -28,7 +28,7 @@ class Product extends Model
         return $this->hasMany(ProductImage::class);
     }
 
-    // Optional: automatisch server bestanden verwijderen bij delete
+    // Optioneel: automatisch server bestanden verwijderen bij delete
     protected static function booted()
     {
         static::deleting(function ($product) {

@@ -11,10 +11,10 @@ Route::get('/', fn() => view('welcome'))->name('welcome');
 Route::get('/about', fn() => view('about'))->name('about');
 Route::get('/contact', fn() => view('contact'))->name('contact');
 
-// Routes that require authentication
+// Routes die authenticatie vereisen
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    // Management dashboard (stuurt $products en $categories)
+    // Beheerdersdashboard (stuurt $products en $categories)
     Route::get('/management', [ManagementController::class, 'index'])->name('management');
 
     // Product routes
@@ -27,16 +27,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
     Route::delete('/products/image/{image}', [ProductController::class, 'destroyImage'])->name('products.image.destroy');
 
-
     // Category CRUD routes
     Route::resource('categories', CategoryController::class)
         ->except(['show']); // index/create/store/edit/update/destroy
-
-    // Profile management
+    
+    // Profielbeheer
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-// Include auth routes (login/register)
-require __DIR__ . '/auth.php';
+    });
+    
+    // Inclusief auth routes (login/register)
+    require __DIR__ . '/auth.php';

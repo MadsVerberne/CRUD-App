@@ -44,10 +44,10 @@ class ProductController extends Controller
             'description' => $request->description,
             'price' => $request->price,
         ]);
-
-        // Pivot table vullen
+        
+        // Pivot tabel vullen
         $product->categories()->attach($request->categories);
-
+        
         // Afbeeldingen opslaan
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $file) {
@@ -81,9 +81,9 @@ class ProductController extends Controller
             'price' => $request->price,
         ]);
 
-        // Sync categories
+        // Synchroniseer categorieën
         $product->categories()->sync($request->categories);
-
+        
         // Voeg nieuwe afbeeldingen toe
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $file) {

@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home - CRUD App</title>
+    <title>Management - CRUD App</title>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
@@ -15,17 +16,16 @@
     @include('layouts.navigation')
 
     <!-- Main -->
-    <main class="management-container">
-        <div class="management-header">
+    <main class="menu-container">
+        <section class="menu-header">
             <h1>Product Management</h1>
             <a href="{{ route('addproduct') }}" class="btn-primary">
                 <span class="icon">+</span> New Product
             </a>
+        </section>
 
-        </div>
-
-        <div class="table-wrapper">
-            <table>
+        <section class="menu-table-section">
+            <table class="menu-table">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -33,7 +33,7 @@
                         <th>Name</th>
                         <th>Description</th>
                         <th>Price</th>
-                        <th>Categorieen</th>
+                        <th>Categories</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -41,7 +41,7 @@
                     @foreach($products as $product)
                     <tr>
                         <td class="id">{{ $product->id }}</td>
-                        <td><img src="{{ $product->image_url }}" width="100" alt="{{ $product->name }}"></td>
+                        <td><img src="{{ $product->images->first() ? asset('storage/' . $product->images->first()->path) : 'https://via.placeholder.com/100x100?text=No+Image' }}" width="100" alt="{{ $product->name }}"></td>
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->description }}</td>
                         <td>€{{ number_format($product->price, 2) }}</td>
@@ -67,49 +67,28 @@
                     </tr>
                     @endforeach
                 </tbody>
-            </table>
-        </div>
-        <div class="form-wrapper">
-            <h3>Nieuwe Categorie Toevoegen</h3>
+                </table>
+            </section>
+        </section>
+        <section class="menu-table-section">
+            <h3>Add New Category</h3>
             <form action="{{ route('categories.store') }}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="name">Categorie Naam</label>
-                    <input type="text" name="name" id="name" placeholder="Nieuwe categorie" required>
+                    <label for="name">Category Name</label>
+                    <input type="text" name="name" id="name" placeholder="New category" required>
                 </div>
-                <button type="submit" class="btn-primary">Toevoegen</button>
+                <button type="submit" class="btn-primary">Add</button>
             </form>
-        </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Naam</th>
-                    <th>Acties</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($categories as $category)
-                <tr>
-                    <td>{{ $category->id }}</td>
-                    <td>{{ $category->name }}</td>
-                    <td>
-                        <a href="{{ route('categories.edit', $category->id) }}" class="btn-edit">Edit</a>
-
-                        <form action="{{ route('categories.destroy', $category->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn-delete" onclick="return confirm('Weet je zeker dat je deze categorie wilt verwijderen?')">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+        </section>
+        
     </main>
 
     <!-- Footer -->
-    @include('partials.footer')
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>© 2025 CRUD APP. Alle rechten voorbehouden.</p>
+    </footer>
 
 </body>
 

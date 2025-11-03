@@ -7,13 +7,14 @@ use Illuminate\Support\Str;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - CRUD App</title>
+    <title>Products - CRUD App</title>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
 <body>
 
-    @include('layouts.navigation')
+    @include('partials.header')
 
     <!-- Main -->
     <main class="menu-container">
@@ -41,7 +42,7 @@ use Illuminate\Support\Str;
                         <th>Description</th>
                         <th>Image</th>
                         <th>Price</th>
-                        <th>Categorien</th>
+                        <th>Categories</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,7 +51,7 @@ use Illuminate\Support\Str;
                         <td>{{ $product->id }}</td>
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->description }}</td>
-                        <td><img src="{{ $product->image_url }}" width="100" alt="{{ $product->name }}"></td>
+                        <td><img src="{{ $product->images->first() ? asset('storage/' . $product->images->first()->path) : 'https://via.placeholder.com/100x100?text=No+Image' }}" width="100" alt="{{ $product->name }}"></td>
                         <td>€{{ number_format($product->price, 2, ',', '.') }}</td>
                         <td>
                             @foreach($product->categories as $category)

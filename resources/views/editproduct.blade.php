@@ -5,19 +5,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit Product - CRUD App</title>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 
 <body>
 
-    @include('partials.header')
+    @include('layouts.navigation')
 
-    <main class="management-container">
-        <div class="management-header">
+    <main class="menu-container">
+        <section class="menu-header">
             <h1>Edit Product</h1>
-            <a href="{{ route('management') }}" class="btn-cancel">Back to Management</a>
-        </div>
+            <a href="{{ route('management') }}" class="btn-outline">Back to Management</a>
+        </section>
 
         <!-- Success / Error messages -->
         @if(session('success'))
@@ -41,7 +42,7 @@
                     <form action="{{ route('products.image.destroy', $image->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" onclick="return confirm('Weet je zeker dat je deze afbeelding wilt verwijderen?')">
+                        <button type="submit" onclick="return confirm('Are you sure you want to delete this image?')">
                             Delete
                         </button>
                     </form>
@@ -89,11 +90,14 @@
                 </div>
             </div>
 
-            <button type="submit">Update Product</button>
+            <button type="submit" class="btn-primary">Update Product</button>
         </form>
     </main>
 
-    @include('partials.footer')
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>© 2025 CRUD APP. Alle rechten voorbehouden.</p>
+    </footer>
 
 </body>
 

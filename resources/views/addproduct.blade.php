@@ -4,19 +4,20 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add New Product - CRUD App</title>
+    <title>Add Product - CRUD App</title>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 
 <body>
 
-    @include('partials.header')
+    @include('layouts.navigation')
 
-    <main class="management-container">
-        <div class="management-header">
+    <main class="menu-container">
+        <section class="menu-header">
             <h1>Add New Product</h1>
-        </div>
+        </section>
 
         <!-- Success / Error messages -->
         @if(session('success'))
@@ -67,11 +68,14 @@
                 </div>
             </div>
 
-            <button type="submit">Save</button>
+            <button type="submit" class="btn-primary">Save</button>
         </form>
     </main>
 
-    @include('partials.footer')
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>© 2025 CRUD APP. Alle rechten voorbehouden.</p>
+    </footer>
 </body>
 
 </html>

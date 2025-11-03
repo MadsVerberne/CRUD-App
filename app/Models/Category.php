@@ -9,7 +9,7 @@ class Category extends Model
 {
     use HasFactory;
 
-    // ⬇️ Voeg deze regel toe
+    // Voeg deze regel toe
     protected $fillable = ['name'];
 
     public function products()
